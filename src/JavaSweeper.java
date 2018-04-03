@@ -8,12 +8,17 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import fields.Box;
+import fields.Coord;
+import fields.GameController;
+import fields.Ranges;
 
 public class JavaSweeper extends JFrame {
+	private GameController game;
 	
 	private static final long serialVersionUID = -4325352426024932585L;
-	private final int COLS = 15;
-	private final int ROWS = 15;
+	private final int COLS = 9;
+	private final int ROWS = 9;
+	private final int BOMBS=10;
 	private final int IMAGE_SIZE=50;
 	JPanel panel;
 
@@ -23,6 +28,8 @@ public class JavaSweeper extends JFrame {
 	}
 	
 	private JavaSweeper() {
+		game=new GameController(COLS, ROWS,BOMBS);
+		game.start();
 		setImages();
 		initPanel();
 		initFrame();
@@ -33,14 +40,15 @@ public class JavaSweeper extends JFrame {
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				for(Box box: Box.values()) {
-					g.drawImage((Image)box.image, box.ordinal()*IMAGE_SIZE,0 ,this);
+				for(Coord coord: Ranges.getAllCoords()) {
+					
+					g.drawImage((Image)game.getBox(coord).image, IMAGE_SIZE*coord.getX(), IMAGE_SIZE* coord.getY(),this);
 					
 				}
 				
 			}
 		};
-		panel.setPreferredSize(new Dimension(COLS*IMAGE_SIZE, ROWS*IMAGE_SIZE));
+		panel.setPreferredSize(new Dimension(Ranges.getSize().getX()*IMAGE_SIZE, Ranges.getSize().getY()*IMAGE_SIZE));		
 		add(panel);
 		
 	}
@@ -52,6 +60,7 @@ public class JavaSweeper extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
+		setIconImage(getImage("icon"));
 	}
 	
 	private void setImages() {
