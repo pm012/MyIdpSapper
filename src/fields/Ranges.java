@@ -37,11 +37,13 @@ public class Ranges {
 		return new Coord(rnd.nextInt(size.getX()), rnd.nextInt(size.getY()));
 	}
 	
+	
+	//draw around each mine
 	static ArrayList<Coord> getCoordsAround(Coord coord) {
 		Coord around;
 		ArrayList<Coord> coordListAround = new ArrayList<Coord>();
-		for(int x= coord.getX(); x<=coord.getX()+1; x++)
-			for(int y=coord.getY();y<=coord.getY();y++)
+		for(int x= coord.getX()-1; x<=coord.getX()+1; x++)
+			for(int y=coord.getY()-1;y<=coord.getY()+1;y++)
 				if(inRange(around=new Coord(x,y)))
 					if(!around.equals(coord))
 						coordListAround.add(around);

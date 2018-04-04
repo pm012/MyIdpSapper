@@ -21,5 +21,14 @@ public class Coord {
 	public void setY(int y) {
 		this.y = y;
 	}
+	//override equals to compare coordinates
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Coord) {
+			Coord to = (Coord)obj;
+			return to.getX()==x&&to.getY()==y;
+		}
+		return true;
+	}
 
 }
