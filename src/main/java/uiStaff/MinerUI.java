@@ -49,7 +49,9 @@ private GameController game;
 	}
 	
 	private void initPanel() {
-		panel= new JPanel() {
+		panel= new JPanel() {			
+			private static final long serialVersionUID = 4018457673812181704L;
+
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
