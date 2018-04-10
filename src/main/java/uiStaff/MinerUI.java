@@ -18,6 +18,8 @@ import fields.Coord;
 import fields.GameController;
 import fields.Ranges;
 
+import uiStaff.Drawings;
+
 public class MinerUI extends JFrame {
 
 	private GameController game;
@@ -29,6 +31,7 @@ public class MinerUI extends JFrame {
 	private final int IMAGE_SIZE=50;
 	private JPanel panel;
 	private JLabel label;
+	private Drawings draw=new Drawings(); //need review!!!!
 	
 	public MinerUI() {
 		formBuilder();
@@ -36,8 +39,8 @@ public class MinerUI extends JFrame {
 
 	private void formBuilder() {
 		game=new GameController(COLS, ROWS, BOMBS);
-		game.start();
-		setImages();
+		game.start();		
+		draw.setImages();
 		initLabel();
 		initPanel();
 		
@@ -99,22 +102,11 @@ public class MinerUI extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
-		setIconImage(getImage("icon"));
+		setIconImage(draw.getImage("icon"));
 		pack();
 	}
 	
-	private void setImages() {
-		for(Box box : Box.values()) {
-			box.setImage(getImage(box.name().toLowerCase()));
-			
-		}
-	}
 	
-	private Image getImage(String name) {
-		 String filename = "/img/"+name+".png";		 
-		 ImageIcon icon = new ImageIcon(getClass().getResource(filename));
-		 return icon.getImage();
-	}
 
 
 
