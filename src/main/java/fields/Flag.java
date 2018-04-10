@@ -4,11 +4,10 @@ class Flag {
 	private Matrix flagMap;
 	private int countOfClosedBoxes;
 	
+	//fill in the upper field with closed boxes and init count of closed boxes
 	void start() {
 		flagMap=new Matrix(Box.CLOSED);
-		countOfClosedBoxes = Ranges.getSize().getX()*Ranges.getSize().getY();
-		//for(Coord around: Ranges.getCoordsAround(new Coord(4,4)))
-		//flagMap.set(new Coord(around.getX(),around.getY()), Box.OPENED);
+		countOfClosedBoxes = Ranges.getSize().getX()*Ranges.getSize().getY();		
 	}
 	
 	Box get(Coord coord) {

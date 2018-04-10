@@ -41,32 +41,30 @@ public class MinerUI extends JFrame {
 		game=new GameController(COLS, ROWS, BOMBS);
 		game.start();		
 		draw.setImages();
-		initLabel();
-		initPanel();
 		
-		initFrame();
+		//build frame
+		initLabel().initPanel().buildFrame();
+		
 	}
 	
-	private void initLabel() {
+	private MinerUI initLabel() {
 		label=new JLabel("Hello");
 		add(label, BorderLayout.SOUTH);
+		return this;
 	}
 	
-	private void initPanel() {
+	private MinerUI initPanel() {
 		panel= new JPanel() {			
-			private static final long serialVersionUID = 4018457673812181704L;
+			private static final long serialVersionUID = 1;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				for(Coord coord: Ranges.getAllCoords()) {
-					g.drawImage((Image)game.getBox(coord).getImage(), IMAGE_SIZE*coord.getX(), IMAGE_SIZE* coord.getY(),this);
-					
+					g.drawImage((Image)game.getBox(coord).getImage(), IMAGE_SIZE*coord.getX(), IMAGE_SIZE* coord.getY(),this);					
 				}
-				
 			}
 		};
-		
 		
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -93,10 +91,11 @@ public class MinerUI extends JFrame {
 		});
 		panel.setPreferredSize(new Dimension(Ranges.getSize().getX()*IMAGE_SIZE, Ranges.getSize().getY()*IMAGE_SIZE));		
 		add(panel);
+		return this;
 		
 	}
 	
-	private void initFrame() {
+	private void buildFrame() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Java Sweeper");
 		setLocationRelativeTo(null);
@@ -104,6 +103,7 @@ public class MinerUI extends JFrame {
 		setVisible(true);
 		setIconImage(draw.getImage("icon"));
 		pack();
+		
 	}
 	
 	

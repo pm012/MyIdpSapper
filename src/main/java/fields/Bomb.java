@@ -10,6 +10,8 @@ class Bomb {
 		
 	}
 	
+	
+	//init bombs
 	void start() {
 		bombMap=new Matrix(Box.ZERO);
 		for(int i=0; i<totalBombs; i++)
