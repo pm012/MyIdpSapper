@@ -10,8 +10,9 @@ class Matrix {
 	}
 	
 	Box get (Coord coord) {
-		if(Ranges.inRange (coord))
-		return matrix[coord.getX()][coord.getY()];
+		if(Ranges.inRange (coord)) {
+			return matrix[coord.getX()][coord.getY()];
+		}
 		return null;
 	}
 	

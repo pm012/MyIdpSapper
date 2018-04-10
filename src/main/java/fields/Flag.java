@@ -47,7 +47,7 @@ class Flag {
 
 	int getCountOfClosedBoxes() {
 		
-		return countOfClosedBoxes;
+		return countOfClosedBoxes;//make calculation of closed boxes
 	}
 
 	public void setBombedToBox(Coord coord) {

@@ -2,17 +2,23 @@ package fields;
 
 public class GameController {
 	//This is Fasade class
+	private Flag pole;
 	private Flag flag;
 	private	Bomb bomb;
+	private int cols;
+	private int rows;
 	private GameState state;
-	public GameState getState() {
-		return state;
-	}
-
+	
 	public GameController(int cols, int rows, int bombs) {
-		Ranges.setSize(new Coord(cols, rows));		
+		Ranges.setSize(new Coord(cols, rows));
+		this.cols = cols;
+		this.rows = rows;
 		bomb=new Bomb(bombs);
 		flag=new Flag();
+	}
+
+	public GameState getState() {
+		return state;
 	}
 	
 	public void start() {

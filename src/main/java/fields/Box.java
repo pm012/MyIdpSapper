@@ -1,5 +1,7 @@
 package fields;
 
+import java.awt.Image;
+
 public enum Box {
 	ZERO,
 	NUM1,
@@ -18,7 +20,7 @@ public enum Box {
 	INFORM,
 	NOBOMB;
 	
-	public Object image;
+	private Image image;
 	
 	Box getNextNumberBox() {
 		return Box.values()[this.ordinal()+1];
@@ -26,6 +28,14 @@ public enum Box {
 	
 	int getNumber() {
 		return this.ordinal();
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 }

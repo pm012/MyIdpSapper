@@ -4,16 +4,22 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Ranges {
+	
 	private static Coord size;
-	private static ArrayList<Coord> allCoords;
-	private static Random rnd=new Random();
+	private static ArrayList<Coord> allCoords; //implement with loops
+	
+	private static Random rnd = new Random();
 	
 	static void setSize(Coord size) {
 		Ranges.size=size;
+		
 		allCoords = new ArrayList<Coord>();
-		for(int y=0; y<size.getY(); y++)
-			for(int x=0; x<size.getX();x++)
+		
+		for(int y=0; y<size.getY(); y++) {
+			for(int x=0; x<size.getX();x++) {
 				allCoords.add(new Coord(x,y));
+			}
+		}
 				
 	}
 
@@ -25,10 +31,6 @@ public class Ranges {
 		return allCoords;
 	}
 
-	public static void setAllCoords(ArrayList<Coord> allCoords) {
-		Ranges.allCoords = allCoords;
-	}
-	
 	static Boolean inRange(Coord coord) {
 		return coord.getX()>=0&&coord.getX()<size.getX()&&coord.getY()>=0&&coord.getY()<size.getY();
 	}
