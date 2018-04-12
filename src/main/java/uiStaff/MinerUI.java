@@ -3,22 +3,17 @@ package uiStaff;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import fields.Box;
 import fields.Coord;
 import fields.GameController;
 import fields.Ranges;
-
-import uiStaff.Drawings;
 
 public class MinerUI extends JFrame {
 
@@ -40,7 +35,7 @@ public class MinerUI extends JFrame {
 	private void formBuilder() {
 		game=new GameController(COLS, ROWS, BOMBS);
 		game.start();		
-		draw.setImages();
+		draw.setImages();	
 		
 		//build frame
 		initLabel().initPanel().buildFrame();
@@ -61,7 +56,7 @@ public class MinerUI extends JFrame {
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				for(Coord coord: Ranges.getAllCoords()) {
-					g.drawImage((Image)game.getBox(coord).getImage(), IMAGE_SIZE*coord.getX(), IMAGE_SIZE* coord.getY(),this);					
+					g.drawImage(game.getBox(coord).getImage(), IMAGE_SIZE*coord.getX(), IMAGE_SIZE* coord.getY(),this);					
 				}
 			}
 		};
