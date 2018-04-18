@@ -28,6 +28,7 @@ public class GameController {
 
 	public void pressedLeftButton(Coord coord) {
 		if (gameOver()) {
+
 			return;
 		}
 		openBox(coord);
@@ -52,11 +53,12 @@ public class GameController {
 
 	private String coolectionToString(Collection<Coord> coords) {
 		StringBuilder result = new StringBuilder();
-		for(Coord coord : coords) {
+		for (Coord coord : coords) {
 			result.append(coord.toString());
 		}
 		return result.toString();
 	}
+
 	private boolean isEquals(Collection<Coord> collection1, Collection<Coord> collection2) {
 		if (collection1.size() != collection2.size()) {
 			return false;
@@ -92,7 +94,7 @@ public class GameController {
 			}
 		}
 	}
-	
+
 	private int getBombsCount(Collection<Coord> coords) {
 		int result = 0;
 		for (Coord coord : coords) {
@@ -104,7 +106,7 @@ public class GameController {
 	}
 
 	/*
-	 * Попали на бомбу
+	 * Opened cell with bomb
 	 */
 	private void openBombs(Coord coord) {
 		state = GameState.BOMBED;
@@ -118,6 +120,7 @@ public class GameController {
 				board.setBox(coordOfBomb, Box.BOMBED);
 			}
 		}
+
 	}
 
 	private void openBoxes(Collection<Coord> coords) {

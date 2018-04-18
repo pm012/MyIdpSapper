@@ -3,7 +3,6 @@ package uiStaff;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -14,6 +13,7 @@ import javax.swing.WindowConstants;
 
 import fields.Coord;
 import fields.GameController;
+
 public class MinerUI extends JFrame {
 
 	private GameController game;
@@ -34,7 +34,7 @@ public class MinerUI extends JFrame {
 	private void formBuilder() {
 		game = new GameController(COLS, ROWS, BOMBS);
 		game.start();
-		draw.setImages();	
+		draw.setImages();
 
 		// build frame
 		initLabel().initPanel().buildFrame();
@@ -56,7 +56,7 @@ public class MinerUI extends JFrame {
 				super.paintComponent(g);
 				for (int col = 0; col < COLS; col++) {
 					for (int row = 0; row < ROWS; row++) {
-						g.drawImage((Image) game.getBox(col, row).getImage(), IMAGE_SIZE * col, IMAGE_SIZE * row, this);
+						g.drawImage(game.getBox(col, row).getImage(), IMAGE_SIZE * col, IMAGE_SIZE * row, this);
 					}
 				}
 			}
@@ -76,6 +76,7 @@ public class MinerUI extends JFrame {
 					game.start();
 
 				label.setText(getMessage());
+				new Dialog(game, MinerUI.this).askContinue();
 
 				panel.repaint();
 
@@ -89,6 +90,10 @@ public class MinerUI extends JFrame {
 		add(panel);
 		return this;
 
+	}
+
+	public void setGameController(GameController game) {
+		this.game = game;
 	}
 
 	private void buildFrame() {
