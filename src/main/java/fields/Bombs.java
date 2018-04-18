@@ -20,7 +20,7 @@ class Bombs {
 		return coordsOfBombs.contains(coord);
 	}
 	
-	//init bombs
+	//deploy bomb
 	public void init() {
 		fixBombsCount();
 		coordsOfBombs = new HashSet<Coord>();

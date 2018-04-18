@@ -17,6 +17,7 @@ public enum Box {
 	FLAGGED,
 	BOMBED,
 	INFORM,
+	OPENED,
 	NOBOMB;
 	
 	private Image image;
