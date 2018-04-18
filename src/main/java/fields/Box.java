@@ -13,21 +13,17 @@ public enum Box {
 	NUM7,
 	NUM8,
 	BOMB,
-	OPENED,
 	CLOSED,
-	FLAGED,
+	FLAGGED,
 	BOMBED,
 	INFORM,
+	OPENED,
 	NOBOMB;
 	
 	private Image image;
-	
+
 	Box getNextNumberBox() {
-		return Box.values()[this.ordinal()+1];
-	}
-	
-	int getNumber() {
-		return this.ordinal();
+		return Box.values()[this.ordinal() + 1];
 	}
 
 	public Image getImage() {
@@ -36,6 +32,15 @@ public enum Box {
 
 	public void setImage(Image image) {
 		this.image = image;
+	}
+	
+	public static Box getByNumber(int number) {
+		for (Box box : Box.values()) {
+			if (box.ordinal() == number) {
+				return box;
+			}
+		}
+		return null;
 	}
 
 }
